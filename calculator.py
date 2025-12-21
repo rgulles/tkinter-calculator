@@ -4,10 +4,56 @@ root = Tk()
 root.title('Calculator')
 root.geometry('320x480')
 
+# Function for button clicks
+def value_clicked(value):
+    display.insert(END, value)
+
+def num1_clicked():
+    value_clicked(1)
+def num2_clicked():
+    value_clicked(2)
+def num3_clicked():
+    value_clicked(3)
+def num4_clicked():
+    value_clicked(4)
+def num5_clicked():
+    value_clicked(5)   
+def num6_clicked():
+    value_clicked(6)
+def num7_clicked():
+    value_clicked(7)
+def num8_clicked():
+    value_clicked(8)
+def num9_clicked():
+    value_clicked(9)
+def num0_clicked():
+    value_clicked(0)
+
+def add_clicked():
+    value_clicked('+')
+def sub_clicked():
+    value_clicked('-')
+def mul_clicked():
+    value_clicked('*')
+def div_clicked():
+    value_clicked('/')
+
+def delete_clicked():
+    display.delete(0, END)
+
+def equal_clicked():
+    try:
+        result = eval(display.get())
+        display.delete(0, END)
+        display.insert(0, result)
+    except:
+        display.delete(0, END)
+        display.insert(0, "Error")
+
+# Frame
 frame = Frame(root)
 frame.pack(fill='both', expand=True) 
-
-
+ 
 # Loops allows columns and rows to expand
 for i in range(4):
     frame.grid_columnconfigure(i, weight=1)
@@ -15,27 +61,26 @@ for i in range(4):
 for i in range(5):
     frame.grid_rowconfigure(i, weight=1)
 
-
 # Display
-display = Entry(frame)
+display = Entry(frame, font=('Arial', 24),justify='right')
 
 # Buttons
-num1 = Button(frame, text="1")
-num2 = Button(frame, text="2")
-num3 = Button(frame, text="3")
-num4 = Button(frame, text="4")
-num5 = Button(frame, text="5")
-num6 = Button(frame, text="6")
-num7 = Button(frame, text="7")
-num8 = Button(frame, text="8")
-num9 = Button(frame, text="9")
-num0 = Button(frame, text="0")
-add = Button(frame, text="+")
-sub = Button(frame, text="-")
-mul = Button(frame, text="x")
-div = Button(frame, text="/")
-equal = Button(frame, text="=")
-delete = Button(frame, text="C")
+num1 = Button(frame, text="1", command=num1_clicked)
+num2 = Button(frame, text="2", command=num2_clicked)
+num3 = Button(frame, text="3", command=num3_clicked)
+num4 = Button(frame, text="4", command=num4_clicked)
+num5 = Button(frame, text="5", command=num5_clicked)
+num6 = Button(frame, text="6", command=num6_clicked)
+num7 = Button(frame, text="7", command=num7_clicked)
+num8 = Button(frame, text="8", command=num8_clicked)
+num9 = Button(frame, text="9", command=num9_clicked)
+num0 = Button(frame, text="0", command=num0_clicked)
+add = Button(frame, text="+", command=add_clicked)
+sub = Button(frame, text="-", command=sub_clicked)
+mul = Button(frame, text="x", command=mul_clicked)
+div = Button(frame, text="/", command=div_clicked)
+equal = Button(frame, text="=", command=equal_clicked)
+delete = Button(frame, text="C", command=delete_clicked)
 
 # Row 0
 display.grid(row=0, column=0, columnspan=4, sticky="nsew")
