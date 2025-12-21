@@ -6,7 +6,9 @@ root.geometry('320x480')
 
 # Function for button clicks
 def value_clicked(value):
+    display.config(state="normal")
     display.insert(END, value)
+    display.config(state="readonly")
 
 def num1_clicked():
     value_clicked(1)
@@ -39,16 +41,22 @@ def div_clicked():
     value_clicked('/')
 
 def delete_clicked():
+    display.config(state="normal")
     display.delete(0, END)
+    display.config(state="readonly")
 
 def equal_clicked():
     try:
+        display.config(state="normal")
         result = eval(display.get())
         display.delete(0, END)
         display.insert(0, result)
+        display.config(state="readonly")
     except:
+        display.config(state="normal")
         display.delete(0, END)
         display.insert(0, "Error")
+        display.config(state="readonly")
 
 # Frame
 frame = Frame(root)
@@ -62,7 +70,7 @@ for i in range(5):
     frame.grid_rowconfigure(i, weight=1)
 
 # Display
-display = Entry(frame, font=('Arial', 24),justify='right')
+display = Entry(frame, font=('Arial', 24),justify='right', state="readonly")
 
 # Buttons
 num1 = Button(frame, text="1", command=num1_clicked)
