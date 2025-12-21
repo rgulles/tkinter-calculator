@@ -4,6 +4,12 @@ root = Tk()
 root.title('Calculator')
 root.geometry('320x480')
 
+# Colors and Fonts
+font = ('Courier', 18, 'bold')
+bg_color = '#333333'
+fg_color = '#ffffff'
+numbers_bg_color = '#4d4d4d'
+
 # Function for button clicks
 def value_clicked(value):
     display.config(state="normal")
@@ -70,25 +76,25 @@ for i in range(5):
     frame.grid_rowconfigure(i, weight=1)
 
 # Display
-display = Entry(frame, font=('Arial', 24),justify='right', state="readonly")
+display = Entry(frame, font=('Courier', 24), readonlybackground='#333333', fg=fg_color, justify='right', state="readonly")
 
 # Buttons
-num1 = Button(frame, text="1", command=num1_clicked)
-num2 = Button(frame, text="2", command=num2_clicked)
-num3 = Button(frame, text="3", command=num3_clicked)
-num4 = Button(frame, text="4", command=num4_clicked)
-num5 = Button(frame, text="5", command=num5_clicked)
-num6 = Button(frame, text="6", command=num6_clicked)
-num7 = Button(frame, text="7", command=num7_clicked)
-num8 = Button(frame, text="8", command=num8_clicked)
-num9 = Button(frame, text="9", command=num9_clicked)
-num0 = Button(frame, text="0", command=num0_clicked)
-add = Button(frame, text="+", command=add_clicked)
-sub = Button(frame, text="-", command=sub_clicked)
-mul = Button(frame, text="x", command=mul_clicked)
-div = Button(frame, text="/", command=div_clicked)
-equal = Button(frame, text="=", command=equal_clicked)
-delete = Button(frame, text="C", command=delete_clicked)
+num1 = Button(frame, text="1", font=font, bg=numbers_bg_color, fg=fg_color, command=num1_clicked)
+num2 = Button(frame, text="2", font=font, bg=numbers_bg_color, fg=fg_color, command=num2_clicked)
+num3 = Button(frame, text="3", font=font, bg=numbers_bg_color, fg=fg_color, command=num3_clicked)
+num4 = Button(frame, text="4", font=font, bg=numbers_bg_color, fg=fg_color, command=num4_clicked)
+num5 = Button(frame, text="5", font=font, bg=numbers_bg_color, fg=fg_color, command=num5_clicked)
+num6 = Button(frame, text="6", font=font, bg=numbers_bg_color, fg=fg_color, command=num6_clicked)
+num7 = Button(frame, text="7", font=font, bg=numbers_bg_color, fg=fg_color, command=num7_clicked)
+num8 = Button(frame, text="8", font=font, bg=numbers_bg_color, fg=fg_color, command=num8_clicked)
+num9 = Button(frame, text="9", font=font, bg=numbers_bg_color, fg=fg_color, command=num9_clicked)
+num0 = Button(frame, text="0", font=font, bg=numbers_bg_color, fg=fg_color, command=num0_clicked)
+add = Button(frame, text="+", font=font, bg=bg_color, fg=fg_color, command=add_clicked)
+sub = Button(frame, text="-", font=font, bg=bg_color, fg=fg_color, command=sub_clicked)
+mul = Button(frame, text="x", font=font, bg=bg_color, fg=fg_color, command=mul_clicked)
+div = Button(frame, text="/", font=font, bg=bg_color, fg=fg_color, command=div_clicked)
+equal = Button(frame, text="=", font=font, bg="#444444", fg=fg_color, command=equal_clicked)
+delete = Button(frame, text="C", font=font, bg='#444444', fg=fg_color, command=delete_clicked)
 
 # Row 0
 display.grid(row=0, column=0, columnspan=4, sticky="nsew")
